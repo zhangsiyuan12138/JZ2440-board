@@ -1,0 +1,6 @@
+led_on.bin:led_on.s
+	gcc -g -c -o led_on.o led_on.s
+	ld -Ttext 0x0000000 -g led_on.o led_on_elf
+	objcopy -o binary -s led_on_elf led_on.bin
+clean:
+		rm -f led_on.bin led_on_elf *.o
